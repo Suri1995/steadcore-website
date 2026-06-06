@@ -63,11 +63,11 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <Image
-                src="/logo.webp"
+                src="/logo-2.svg"
                 alt="SteadCore Logo"
                 width={245}
                 height={70}
-                className="h-15 w-48 md:w-64 sm:h-18"
+                className="h-15 w-48 md:w-72 md:h-20"
                 priority
               />
             </Link>
