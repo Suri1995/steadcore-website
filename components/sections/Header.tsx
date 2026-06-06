@@ -67,7 +67,7 @@ export function Header() {
                 alt="SteadCore Logo"
                 width={245}
                 height={70}
-                className="h-15 w-48 md:w-72 md:h-20"
+                className="h-24 w-78 md:w-80 md:h-28"
                 priority
               />
             </Link>
