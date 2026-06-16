@@ -4,32 +4,95 @@ import React from 'react';
 import { ScrollReveal } from '../animated/ScrollReveal';
 import { AnimatedButton } from '../animated/AnimatedButton';
 
+// Feature badge icons as inline SVGs (matching screenshot icon style)
+const features = [
+  {
+    label: 'Precision\nEngineering',
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width={36} height={36}>
+        <circle cx="20" cy="20" r="12" stroke="#34d399" strokeWidth="2" />
+        <circle cx="20" cy="20" r="5" stroke="#34d399" strokeWidth="2" />
+        <line x1="20" y1="2" x2="20" y2="8" stroke="#34d399" strokeWidth="2" strokeLinecap="round" />
+        <line x1="20" y1="32" x2="20" y2="38" stroke="#34d399" strokeWidth="2" strokeLinecap="round" />
+        <line x1="2" y1="20" x2="8" y2="20" stroke="#34d399" strokeWidth="2" strokeLinecap="round" />
+        <line x1="32" y1="20" x2="38" y2="20" stroke="#34d399" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Reliable\nQuality',
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width={36} height={36}>
+        <path d="M20 4 L34 10 L34 22 C34 30 20 37 20 37 C20 37 6 30 6 22 L6 10 Z" stroke="#34d399" strokeWidth="2" fill="none" />
+        <polyline points="13,20 18,26 28,15" stroke="#34d399" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Advanced\nTechnology',
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width={36} height={36}>
+        <circle cx="20" cy="20" r="8" stroke="#34d399" strokeWidth="2" />
+        <circle cx="20" cy="20" r="14" stroke="#34d399" strokeWidth="1.5" strokeDasharray="4 3" />
+        <circle cx="20" cy="6" r="2.5" stroke="#34d399" strokeWidth="1.5" />
+        <circle cx="20" cy="34" r="2.5" stroke="#34d399" strokeWidth="1.5" />
+        <circle cx="6" cy="20" r="2.5" stroke="#34d399" strokeWidth="1.5" />
+        <circle cx="34" cy="20" r="2.5" stroke="#34d399" strokeWidth="1.5" />
+      </svg>
+    ),
+  },
+  {
+    label: 'On-Time\nDelivery',
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width={36} height={36}>
+        <rect x="3" y="16" width="26" height="17" rx="2" stroke="#34d399" strokeWidth="2" />
+        <path d="M29 20 L35 24 L35 32 L29 32" stroke="#34d399" strokeWidth="2" strokeLinejoin="round" />
+        <line x1="3" y1="24" x2="29" y2="24" stroke="#34d399" strokeWidth="1.5" />
+        <circle cx="10" cy="33" r="3" stroke="#34d399" strokeWidth="2" />
+        <circle cx="22" cy="33" r="3" stroke="#34d399" strokeWidth="2" />
+      </svg>
+    ),
+  },
+];
+
 export function Hero() {
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden"
+      className="relative flex items-center overflow-hidden"
       aria-label="Hero section"
       style={{
         height: '100dvh',
         minHeight: '100svh',
-        backgroundImage: "url('/motherboard-background.jpg')",
+        backgroundImage: "url('/circuit-board.webp')",
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center right',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* ── Overlay: deeper, richer dark tint for strong text contrast ── */}
+      {/* ── Dark gradient: heavy on the left, fades to transparent right ── */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background:
-            'linear-gradient(160deg, rgba(0,10,6,0.88) 0%, rgba(0,22,12,0.78) 50%, rgba(0,10,6,0.92) 100%)',
+            'linear-gradient(100deg, rgba(0,8,4,0.97) 0%, rgba(0,12,6,0.90) 35%, rgba(0,10,5,0.60) 60%, rgba(0,6,3,0.15) 100%)',
           zIndex: 1,
         }}
       />
 
-      {/* ── Subtle green glow — kept soft so it doesn't compete with text ── */}
+      {/* ── Bottom fade so feature bar reads cleanly ── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          height: '220px',
+          background:
+            'linear-gradient(to top, rgba(0,8,4,0.92) 0%, transparent 100%)',
+          zIndex: 2,
+        }}
+      />
+
+      {/* ── Subtle green glow on the left ── */}
       <div
         className="absolute inset-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
@@ -38,152 +101,141 @@ export function Hero() {
         <div
           className="absolute rounded-full blur-3xl"
           style={{
-            width: 700,
-            height: 700,
-            top: '5%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: 'radial-gradient(circle, rgba(22,163,74,0.08) 0%, transparent 70%)',
-          }}
-        />
-        <div
-          className="absolute rounded-full blur-3xl"
-          style={{
-            width: 500,
-            height: 300,
-            bottom: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: 'radial-gradient(circle, rgba(5,150,105,0.07) 0%, transparent 70%)',
+            width: 600,
+            height: 600,
+            top: '10%',
+            left: '-5%',
+            background: 'radial-gradient(circle, rgba(22,163,74,0.07) 0%, transparent 70%)',
           }}
         />
       </div>
 
-      {/* ── Main content ── */}
+      {/* ── Main content: left-aligned ── */}
       <div
-        className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-36 sm:pb-20 flex flex-col items-center text-center"
-        style={{ zIndex: 3 }}
+        className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 flex flex-col justify-between"
+        style={{ zIndex: 3, height: '100%', paddingTop: '18vh', paddingBottom: '0' }}
       >
-        {/* Eyebrow */}
-        <ScrollReveal animation="slide-up" delay={0}>
-          <span
-            className="inline-flex items-center gap-2 mb-7 rounded-full px-4 py-1.5
-                       text-xs font-semibold tracking-[0.18em] uppercase
-                       border border-emerald-400/50 bg-emerald-900/60 backdrop-blur-sm
-                       text-emerald-300 shadow-lg shadow-emerald-900/30"
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"
-              aria-hidden="true"
-            />
-            Advanced Manufacturing
-          </span>
-        </ScrollReveal>
+        {/* Top content block */}
+        <div className="flex flex-col items-start max-w-2xl">
 
-        {/* Heading */}
-        <ScrollReveal animation="slide-up" delay={100}>
-          <h1
-            className="font-bold font-montserrat leading-[1.1] tracking-tight mb-5"
-            style={{ fontSize: 'clamp(2.25rem, 6vw, 3.5rem)' }}
-          >
-            {/* Bright white-to-emerald gradient — crisp against dark overlay */}
-            <span
+          {/* Eyebrow */}
+          <ScrollReveal animation="slide-up" delay={0}>
+            <p
+              className="mb-5 text-xs font-semibold tracking-[0.22em] uppercase"
+              style={{ color: '#34d399' }}
+            >
+              Precision.&nbsp; Performance.&nbsp; Reliability.
+            </p>
+          </ScrollReveal>
+
+          {/* Heading — split style: white line / green bold line */}
+          <ScrollReveal animation="slide-up" delay={100}>
+            <h1
+              className="font-bold font-montserrat leading-[1.05] tracking-tight mb-6"
+              style={{ fontSize: 'clamp(2.6rem, 6.5vw, 5rem)' }}
+            >
+              <span
+                style={{
+                  color: '#ffffff',
+                  textShadow: '0 2px 24px rgba(0,0,0,0.8)',
+                  display: 'block',
+                }}
+              >
+                Next-Gen PCB
+              </span>
+              <span
+                style={{
+                  display: 'block',
+                  background: 'linear-gradient(90deg, #4ade80 0%, #34d399 50%, #10b981 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 20px rgba(52,211,153,0.45))',
+                  lineHeight: 1.0,
+                }}
+              >
+                SOLUTIONS
+              </span>
+            </h1>
+          </ScrollReveal>
+
+          {/* Sub-copy */}
+          <ScrollReveal animation="slide-up" delay={200}>
+            <p
+              className="text-sm sm:text-base leading-relaxed mb-10 max-w-md"
               style={{
-                background: 'linear-gradient(90deg, #6ee7b7 0%, #34d399 40%, #10b981 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                filter: 'drop-shadow(0 0 18px rgba(52,211,153,0.35))',
+                color: '#94a3b8',
+                textShadow: '0 1px 8px rgba(0,0,0,0.8)',
               }}
             >
-              Next-Gen PCB {""}
-            </span>
-            {/* <br /> */}
-            <span
-              style={{
-                color: '#ffffff',
-                textShadow: '0 2px 24px rgba(0,0,0,0.7)',
-              }}
-            >
-              Solutions
-            </span>
-          </h1>
-        </ScrollReveal>
+              Delivering high-quality printed circuit boards built for
+              tomorrow's technology.
+            </p>
+          </ScrollReveal>
 
-        {/* Sub-copy — brighter slate so it's easily readable */}
-        <ScrollReveal animation="slide-up" delay={200}>
-          <p
-            className="text-base sm:text-lg leading-relaxed max-w-3xl mb-10"
-            style={{
-              color: '#cbd5e1',       /* slate-300 but explicit for safety */
-              textShadow: '0 1px 8px rgba(0,0,0,0.8)',
-            }}
-          >
-            Cutting-edge printed circuit board manufacturing with precision
-            engineering and advanced technology — built for the future of
-            electronics.
-          </p>
-        </ScrollReveal>
+          {/* CTAs */}
+          <ScrollReveal animation="slide-up" delay={300}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <AnimatedButton variant="primary" size="lg">
+                Explore Products
+              </AnimatedButton>
+              <AnimatedButton variant="outline" size="lg">
+                Learn More
+              </AnimatedButton>
+            </div>
+          </ScrollReveal>
+        </div>
 
-        {/* CTAs */}
-        <ScrollReveal animation="slide-up" delay={300}>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full justify-center mb-14">
-            <AnimatedButton variant="primary" size="lg">
-              Explore Products
-            </AnimatedButton>
-            <AnimatedButton variant="outline" size="lg">
-              Learn More
-            </AnimatedButton>
-          </div>
-        </ScrollReveal>
-
-        {/* Stats bar — solid dark bg with visible border for strong contrast */}
+        {/* ── Feature badges: pinned to bottom, full-width separator bar ── */}
         <ScrollReveal animation="slide-up" delay={400}>
           <div
-            className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-emerald-500/25"
-            role="list"
-            aria-label="Company statistics"
-            style={{
-              backdropFilter: 'blur(12px)',
-              background: 'rgba(0,20,10,0.70)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)',
-            }}
+            className="w-full"
+            style={{ paddingBottom: 0 }}
           >
-            {[
-              { value: '500+', label: 'Projects Delivered' },
-              { value: '50+',  label: 'Companies Served'  },
-              { value: '99%',  label: 'Quality Rate'      },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                role="listitem"
-                className="flex flex-col items-center py-5 px-3 transition-colors duration-200 cursor-default"
-                style={{ background: 'rgba(255,255,255,0.03)' }}
-                onMouseEnter={e =>
-                  (e.currentTarget.style.background = 'rgba(52,211,153,0.08)')
-                }
-                onMouseLeave={e =>
-                  (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')
-                }
-              >
-                <p
-                  className="text-2xl sm:text-3xl font-bold font-montserrat leading-none mb-1"
-                  aria-label={`${stat.value} ${stat.label}`}
+            {/* thin green rule above bar */}
+            <div
+              style={{
+                height: 1,
+                background:
+                  'linear-gradient(90deg, #34d399 0%, rgba(52,211,153,0.3) 50%, transparent 100%)',
+                marginBottom: 0,
+              }}
+            />
+
+            <div
+              className="grid grid-cols-4"
+              role="list"
+              aria-label="Key capabilities"
+              style={{
+                background: 'rgba(0,10,5,0.72)',
+                backdropFilter: 'blur(10px)',
+              }}
+            >
+              {features.map((f, i) => (
+                <div
+                  key={i}
+                  role="listitem"
+                  className="flex flex-col items-center justify-center gap-3 py-6 cursor-default transition-colors duration-200"
                   style={{
-                    color: '#34d399',
-                    textShadow: '0 0 20px rgba(52,211,153,0.40)',
+                    borderRight: i < features.length - 1 ? '1px solid rgba(52,211,153,0.15)' : 'none',
                   }}
+                  onMouseEnter={e =>
+                    (e.currentTarget.style.background = 'rgba(52,211,153,0.06)')
+                  }
+                  onMouseLeave={e =>
+                    (e.currentTarget.style.background = 'transparent')
+                  }
                 >
-                  {stat.value}
-                </p>
-                <p
-                  className="text-[11px] sm:text-xs text-center leading-snug"
-                  style={{ color: '#94a3b8' }} /* slate-400 — explicit */
-                >
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+                  {f.icon}
+                  <p
+                    className="text-[10px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-center leading-snug whitespace-pre-line"
+                    style={{ color: '#cbd5e1' }}
+                  >
+                    {f.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
       </div>
