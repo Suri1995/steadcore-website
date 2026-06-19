@@ -5,23 +5,23 @@ import { Reveal } from '@/components/ui/Reveal';
 const VALUES = [
   {
     number: '01',
-    title: 'Honesty before the sale',
-    body: 'We tell you what we can and cannot do — including lead times, layer counts, and risk areas — before you place an order. We have never promised a date we could not keep.',
+    title: 'Quality, engineered in',
+    body: 'Every board we manufacture — Single-Sided, Double-Sided, or Metal-Core — is held to the same stringent quality standards before it leaves our Ramdaspally facility. We built our quality control systems on rigor, not shortcuts, because electrical performance and long-term dependability matter more to our customers than how fast we can ship.',
   },
   {
     number: '02',
-    title: 'The engineer on the floor matters',
-    body: 'Our operators are trained, fairly paid, and empowered to stop a line when something looks wrong. Good boards come from confident people, not pressured ones.',
+    title: 'Integrity in how we work',
+    body: 'A manufacturing partnership only works when both sides can trust what the other says. From quoted lead times to production capacity, we would rather give you the accurate answer than the convenient one — and we tell you what we can and cannot do before you commit to an order.',
   },
   {
     number: '03',
-    title: 'Traceability is not optional',
-    body: 'Every panel, every batch, every test result is recorded and retrievable for seven years. When our customers need answers, we have them.',
+    title: 'Innovation with intent',
+    body: 'Our technical foundation comes from deep academic and engineering expertise in electronic systems. We continuously invest in advanced manufacturing technologies and expand our capabilities — not for its own sake, but to keep pace with where India’s electronics sector is actually headed.',
   },
   {
     number: '04',
-    title: 'Long-term over transactional',
-    body: 'Our average customer tenure is nine years. We earn that by being the partner who flags problems early, not the vendor who ships and disappears.',
+    title: 'Customer commitment, not just delivery',
+    body: 'We build long-term partnerships through customized solutions, responsive technical support, competitive pricing, and dependable delivery schedules. A board that arrives late or unsupported has not really been delivered — so we measure ourselves on the relationship, not just the shipment.',
   },
 ];
 
@@ -29,21 +29,24 @@ export function AboutValues() {
   return (
     <section
       aria-labelledby="values-heading"
-      className="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800"
+      className="py-16 sm:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[240px_1fr] gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[240px_1fr] gap-10 lg:gap-16 items-start">
           <Reveal from="left">
             <div className="lg:sticky lg:top-32">
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide mb-5">
+                Our Values
+              </span>
               <h2
                 id="values-heading"
-                className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4"
+                className="font-black font-montserrat leading-[1.15] tracking-tight text-2xl sm:text-3xl mb-5"
               >
-                What we believe
+                <span className="text-primary">What We</span>{' '}
+                <span className="text-slate-900 dark:text-white">Believe</span>
               </h2>
-              <div aria-hidden="true" className="w-8 h-0.5 bg-primary/40 rounded-full mb-6" />
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                Principles we hold regardless of how uncomfortable they are commercially.
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
+                The four principles that guide every board we build, from day one.
               </p>
             </div>
           </Reveal>
@@ -53,7 +56,7 @@ export function AboutValues() {
               <Reveal key={v.number} delay={i * 0.08}>
                 <div
                   role="listitem"
-                  className="group flex gap-8 py-8 border-b border-slate-200 dark:border-slate-700 last:border-0 hover:pl-2 smooth-transition"
+                  className="group flex flex-col sm:flex-row gap-3 sm:gap-8 py-8 border-b border-slate-200 dark:border-slate-700 last:border-0 hover:pl-2 smooth-transition"
                 >
                   <span
                     aria-hidden="true"
@@ -61,11 +64,11 @@ export function AboutValues() {
                   >
                     {v.number}
                   </span>
-                  <div>
-                    <h3 className="font-bold font-montserrat text-slate-900 dark:text-white text-base mb-2">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold font-montserrat text-slate-900 dark:text-white text-base sm:text-lg mb-2">
                       {v.title}
                     </h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
+                    <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed">
                       {v.body}
                     </p>
                   </div>

@@ -2,89 +2,88 @@
 
 import { Reveal } from '@/components/ui/Reveal';
 
-const LEADERS = [
-  {
-    initials: 'JC',
-    name: 'James Chen',
-    title: 'Co-founder & CEO',
-    bio: 'Former process engineer at Foxconn, James left to prove that a manufacturer could grow globally without abandoning its quality DNA. He still walks the floor every morning.',
-    color: 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300',
-  },
-  {
-    initials: 'LW',
-    name: 'Linda Wei',
-    title: 'Co-founder & CTO',
-    bio: 'Linda holds seven patents in micro-via drilling. She leads our R&D team and personally reviews every new material supplier before we add them to our approved list.',
-    color: 'bg-violet-50 dark:bg-violet-950 text-violet-700 dark:text-violet-300',
-  },
-  {
-    initials: 'RO',
-    name: 'Rafael Osei',
-    title: 'VP Quality Assurance',
-    bio: '18 years running IPC training programmes across Asia, Rafael rebuilt our inspection culture from "pass/fail" into a data-driven continuous improvement engine.',
-    color: 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300',
-  },
-  {
-    initials: 'SK',
-    name: 'Sunita Kapoor',
-    title: 'VP Customer Engineering',
-    bio: "Sunita's team of DFM engineers reviews every new design submission. Her rule: If we would not put it in our own product, we say so before production starts.",
-    color: 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300',
-  },
-];
+const FOUNDER = {
+  initials: 'SL',
+  name: 'Dr. Sri Lakshmi E',
+  title: 'Founder',
+  credential: 'Ph.D., Electrical & Electronics Engineering — IIT (BHU), Varanasi',
+  bio: 'Leveraging her academic and technical expertise in electronic systems and manufacturing, Dr. Lakshmi founded Steadcore Industries to deliver reliable, cost-effective, and technologically advanced PCB solutions to India’s rapidly expanding electronics sector.',
+};
+
+const VALUES = ['Quality', 'Integrity', 'Innovation', 'Customer commitment'];
 
 export function AboutLeadership() {
   return (
     <section
       aria-labelledby="leadership-heading"
-      className="py-24 border-b border-slate-100 dark:border-slate-800"
+      className="py-16 sm:py-20 lg:py-24 border-b border-slate-100 dark:border-slate-800"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[240px_1fr] gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[240px_1fr] gap-10 lg:gap-16 items-start">
           <Reveal from="left">
             <div className="lg:sticky lg:top-32">
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide mb-5">
+                Leadership
+              </span>
               <h2
                 id="leadership-heading"
-                className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4"
+                className="font-black font-montserrat leading-[1.15] tracking-tight text-2xl sm:text-3xl mb-5"
               >
-                Leadership
+                <span className="text-primary">Meet Our</span>{' '}
+                <span className="text-slate-900 dark:text-white">Founder</span>
               </h2>
-              <div aria-hidden="true" className="w-8 h-0.5 bg-primary/40 rounded-full mb-6" />
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                The people accountable for every board we ship.
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
+                Founder-led from day one — the person accountable for every board we ship.
               </p>
             </div>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 gap-5" role="list">
-            {LEADERS.map((person, i) => (
-              <Reveal key={person.name} delay={i * 0.08}>
-                <article
-                  role="listitem"
-                  className="group p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-slate-200 dark:hover:border-slate-600 hover:shadow-md smooth-transition"
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-sm font-bold font-montserrat ${person.color}`}
-                      aria-hidden="true"
-                    >
-                      {person.initials}
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-900 dark:text-white text-sm leading-tight">
-                        {person.name}
-                      </p>
-                      <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-                        {person.title}
-                      </p>
+          <div className="space-y-5">
+            <Reveal delay={0.05}>
+              <article className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-slate-200 dark:hover:border-slate-600 hover:shadow-md smooth-transition">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-6">
+                  <div
+                    className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-black font-montserrat bg-primary/10 text-primary"
+                    aria-hidden="true"
+                  >
+                    {FOUNDER.initials}
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-slate-900 dark:text-white text-lg leading-tight">
+                      {FOUNDER.name}
+                    </p>
+                    <p className="text-sm text-primary font-semibold mt-0.5">
+                      {FOUNDER.title}
+                    </p>
+                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                      {FOUNDER.credential}
+                    </p>
+
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-4 max-w-2xl">
+                      {FOUNDER.bio}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-5" aria-label="Core values she leads by">
+                      {VALUES.map((v) => (
+                        <span
+                          key={v}
+                          className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-700"
+                        >
+                          {v}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                    {person.bio}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
+                </div>
+              </article>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <p className="text-sm text-slate-400 dark:text-slate-500 italic px-1">
+                Steadcore is founder-led today, by design — as the team grows, this is where you’ll meet the engineers and quality leads who join her.
+              </p>
+            </Reveal>
           </div>
         </div>
       </div>

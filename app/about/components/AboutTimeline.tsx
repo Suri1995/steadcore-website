@@ -2,36 +2,31 @@
 
 import { Reveal } from '@/components/ui/Reveal';
 
-const TIMELINE = [
+const MILESTONES = [
   {
-    year: '2003',
-    title: 'Founded in Shenzhen',
-    body: 'PCBTech opens with a single SMT production line, three engineers, and one belief: that PCB manufacturing should be transparent, traceable, and honest.',
+    year: '2026',
+    title: 'Founded in Ramdaspally, Hyderabad',
+    body: 'Dr. Sri Lakshmi E, a Ph.D. in Electrical and Electronics Engineering from IIT (BHU) Varanasi, establishes Steadcore Industries with a vision to bring reliable, cost-effective, and technologically advanced PCB solutions to India’s rapidly expanding electronics sector.',
   },
   {
-    year: '2007',
-    title: 'First ISO certification',
-    body: 'After four years of consistent delivery, we earn ISO 9001 certification — the first in our industrial park to do so with zero corrective actions.',
+    year: 'Day one',
+    title: 'Three PCB lines, one quality standard',
+    body: 'We launch with the capability to manufacture Single-Sided, Double-Sided, and Metal-Core PCBs, each built to the same stringent quality standards for electrical performance, durability, and long-term dependability.',
   },
   {
-    year: '2011',
-    title: 'Rigid-flex capability added',
-    body: 'We invest in laser drilling and lamination presses to serve medical device customers who need flex and rigid-flex assemblies built to IPC Class 3.',
+    year: 'Today',
+    title: 'Production capacity online',
+    body: 'Our Ramdaspally facility runs at up to 10,000 square meters of Single-Sided and 3,000 square meters of Double-Sided PCB capacity per month — enough to take on small prototype runs and large-scale orders without compromise.',
   },
   {
-    year: '2015',
-    title: 'Aerospace programme win',
-    body: 'Our first ITAR-registered production run for an avionics OEM — a milestone that reshapes our quality culture from the ground up.',
+    year: 'Today',
+    title: 'Seven industries, one supply chain',
+    body: 'We serve LED lighting, consumer electronics, industrial electronics, power electronics, industrial automation, telecommunications, and emerging technology customers — each supported by the same rigorous quality control systems.',
   },
   {
-    year: '2019',
-    title: '50 million boards shipped',
-    body: 'We cross a production milestone that few contract manufacturers reach without losing the "small enough to care" attention that defines our customer relationships.',
-  },
-  {
-    year: '2023',
-    title: 'Twenty years of precision',
-    body: 'Three facilities, 400 engineers, and customers in 60 countries — still run by the same founding team, still obsessed with zero-defect delivery.',
+    year: 'Ahead',
+    title: 'Building toward India’s most trusted PCB partner',
+    body: 'We’re investing in advanced technologies, expanding our capabilities, and growing our capacity — guided by quality, integrity, innovation, and customer commitment, with the goal of becoming one of India’s most trusted PCB manufacturers.',
   },
 ];
 
@@ -39,56 +34,57 @@ export function AboutTimeline() {
   return (
     <section
       aria-labelledby="timeline-heading"
-      className="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800"
+      className="py-16 sm:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[240px_1fr] gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-10 lg:gap-16 items-start">
           <Reveal from="left">
             <div className="lg:sticky lg:top-32">
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide mb-5">
+                Our Journey
+              </span>
               <h2
                 id="timeline-heading"
-                className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4"
+                className="font-black font-montserrat leading-[1.15] tracking-tight text-2xl sm:text-3xl mb-5"
               >
-                Our history
+                <span className="text-primary">Where We</span>{' '}
+                <span className="text-slate-900 dark:text-white">Began</span>
               </h2>
-              <div aria-hidden="true" className="w-8 h-0.5 bg-primary/40 rounded-full mb-6" />
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                Twenty years of milestones, each one earned rather than announced.
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
+                A young company, built deliberately — here’s where we started and where we’re headed.
               </p>
             </div>
           </Reveal>
 
-          <ol aria-label="PCBTech company history" className="relative">
+          <ol aria-label="Steadcore Industries foundation and roadmap" className="relative">
+            {/* Connecting line — centered on the 12px dots below (0.75rem / 2 = 1.5) */}
             <div
               aria-hidden="true"
-              className="absolute left-[3.25rem] sm:left-[4.5rem] top-3 bottom-3 w-px bg-slate-200 dark:bg-slate-700"
+              className="absolute left-1.5 top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-700"
             />
 
             <div className="space-y-0">
-              {TIMELINE.map((item, i) => (
-                <Reveal key={item.year} delay={i * 0.07}>
-                  <li className="relative flex gap-6 sm:gap-10 pb-12 last:pb-0 group">
-                    <div className="flex-shrink-0 flex flex-col items-center z-10">
-                      <div className="w-[6.5rem] sm:w-[9rem] text-right pr-4 sm:pr-6">
-                        <span className="text-lg sm:text-xl font-black font-montserrat text-primary leading-none">
-                          {item.year}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div
+              {MILESTONES.map((item, i) => (
+                <Reveal key={`${item.year}-${item.title}`} delay={i * 0.06}>
+                  <li className="group relative pl-10 sm:pl-12 pb-10 sm:pb-12 last:pb-0">
+                    {/* Dot — own dedicated gutter, never collides with text */}
+                    <span
                       aria-hidden="true"
-                      className="absolute left-[3.1rem] sm:left-[4.35rem] top-1.5 w-3 h-3 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-600 group-hover:border-primary smooth-transition z-10"
+                      className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-600 group-hover:border-primary group-hover:scale-110 transition-[border-color,transform] duration-300 z-10"
                     />
 
-                    <div className="pt-0 flex-1 pb-2">
-                      <h3 className="font-bold font-montserrat text-slate-900 dark:text-white text-base mb-2">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-2">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] sm:text-xs font-bold uppercase tracking-wider font-montserrat whitespace-nowrap">
+                        {item.year}
+                      </span>
+                      <h3 className="font-bold font-montserrat text-slate-900 dark:text-white text-base sm:text-lg leading-snug">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg">
-                        {item.body}
-                      </p>
                     </div>
+
+                    <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {item.body}
+                    </p>
                   </li>
                 </Reveal>
               ))}
