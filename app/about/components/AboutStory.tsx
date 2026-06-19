@@ -25,29 +25,29 @@ export function AboutStory() {
           <div className="space-y-8">
             <Reveal delay={0.05}>
               <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                PCBTech was started because two engineers believed the industry had traded quality for volume — and that a manufacturer genuinely committed to zero-defect delivery could build a business around customers who agreed.
+                Steadcore Industries was founded by Dr. Sri Lakshmi E, who holds a Ph.D. in Electrical and Electronics Engineering from IIT (BHU), Varanasi. Leveraging her extensive academic and technical expertise in electronic systems and manufacturing, she established Steadcore Industries with a vision to deliver reliable, cost-effective, and technologically advanced PCB solutions to India&apos;s rapidly expanding electronics sector.
               </p>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                Twenty years later, the founding team still runs the company. We have never taken outside investment, which means our decisions are driven by what is right for our customers and our people — not by a quarterly metric. That independence has allowed us to say no to orders we could not do well, to invest in equipment before it was commercially necessary, and to retain engineers whose institutional knowledge is genuinely irreplaceable.
+                Printed Circuit Boards form the foundation of modern electronic products, and we recognize their critical role in ensuring performance and reliability. At Steadcore Industries, every PCB is manufactured to meet stringent quality standards, ensuring superior electrical performance, durability, and long-term dependability. Our manufacturing facility is equipped with the capability to produce up to 10,000 square meters of Single-Sided PCBs and 3,000 square meters of Double-Sided PCBs per month.
               </p>
             </Reveal>
 
             <Reveal delay={0.15}>
               <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                We are not the largest PCB manufacturer in Asia. We are deliberate about that. Controlled scale means every new customer gets the same attention as our longest-running account — the same DFM review, the same dedicated engineer, the same first-name relationship with the people who will build their boards.
+                We proudly serve a diverse range of industries, including LED lighting, consumer electronics, industrial electronics, power electronics, industrial automation, telecommunications, and emerging technology sectors. Through advanced manufacturing processes and rigorous quality control systems, we ensure that every PCB delivered meets the highest standards of precision, performance, and reliability.
               </p>
             </Reveal>
 
             <Reveal delay={0.2}>
               <blockquote className="border-l-4 border-primary/40 pl-6 py-1 my-2">
                 <p className="text-lg font-semibold text-slate-800 dark:text-slate-200 italic leading-snug">
-                  "If we would not put it in our own product, we say so before production starts."
+                  "Building Reliable Connections for a Smarter Future"
                 </p>
                 <footer className="mt-3 text-sm text-slate-400 not-italic">
-                  — Sunita Kapoor, VP Customer Engineering
+                  — Steadcore Industries
                 </footer>
               </blockquote>
             </Reveal>

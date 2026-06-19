@@ -8,24 +8,24 @@ import { GradientCard } from '../animated/GradientCard';
 export function About() {
   const capabilities = [
     {
+      icon: '📋',
+      title: 'Quality Manufacturing',
+      description: 'Single-Sided, Double-Sided, and Metal-Core PCBs',
+    },
+    {
+      icon: '👨‍🔬',
+      title: 'Expert Leadership',
+      description: 'Founded by Dr. Sri Lakshmi E, Ph.D. in Electrical and Electronics Engineering from IIT (BHU)',
+    },
+    {
       icon: '🏭',
-      title: 'State-of-the-Art Facilities',
-      description: 'Advanced manufacturing equipment and infrastructure',
+      title: 'High Capacity',
+      description: '10,000 sq.m Single-Sided & 3,000 sq.m Double-Sided PCBs monthly',
     },
     {
-      icon: '👥',
-      title: 'Expert Team',
-      description: '50+ years combined industry experience',
-    },
-    {
-      icon: '🌍',
-      title: 'Global Reach',
-      description: 'Serving customers in 30+ countries worldwide',
-    },
-    {
-      icon: '⏱️',
-      title: 'Fast Turnaround',
-      description: 'Quick prototyping and production timelines',
+      icon: '🌟',
+      title: 'Industry Reach',
+      description: 'Serving LED, consumer, industrial, power, automation, and telecom sectors',
     },
   ];
 
@@ -39,12 +39,10 @@ export function About() {
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
                   <span className="text-slate-900 dark:text-white">About </span>
-                  <span className="gradient-text">PCBTech</span>
+                  <span className="gradient-text">Steadcore Industries</span>
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                  With over two decades of excellence in PCB manufacturing, we've been pioneers
-                  in delivering innovative circuit board solutions to leading electronics companies
-                  worldwide. Our commitment to quality and innovation drives everything we do.
+                  Steadcore Industries, established in 2026 and located in Ramdaspally, Hyderabad, is a dedicated manufacturer of high-quality Printed Circuit Boards (PCBs), contributing to India&apos;s electronics supply chain with precision, reliability, and consistency.
                 </p>
               </div>
             </ScrollReveal>
@@ -54,15 +52,15 @@ export function About() {
               <div className="grid grid-cols-2 gap-6 py-8 border-y border-slate-200 dark:border-slate-700">
                 <div>
                   <p className="text-4xl font-bold font-montserrat text-primary">
-                    <AnimatedCounter end={500} duration={2} suffix="+" />
+                    <AnimatedCounter end={10000} duration={2} suffix="+" />
                   </p>
-                  <p className="text-slate-600 dark:text-slate-400 mt-2">Active Projects</p>
+                  <p className="text-slate-600 dark:text-slate-400 mt-2">Sq.m Single-Sided Monthly</p>
                 </div>
                 <div>
                   <p className="text-4xl font-bold font-montserrat text-secondary">
-                    <AnimatedCounter end={95} duration={2} suffix="%" />
+                    <AnimatedCounter end={3000} duration={2} suffix="+" />
                   </p>
-                  <p className="text-slate-600 dark:text-slate-400 mt-2">Client Satisfaction</p>
+                  <p className="text-slate-600 dark:text-slate-400 mt-2">Sq.m Double-Sided Monthly</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -91,21 +89,21 @@ export function About() {
           <ScrollReveal animation="slide-down" delay={200}>
             <div className="space-y-8">
               {[
-                { year: '2002', title: 'Founded', desc: 'Started with single facility' },
-                { year: '2010', title: 'Expansion', desc: 'Grew to 3 manufacturing centers' },
-                { year: '2018', title: 'Innovation', desc: 'Invested in advanced technology' },
-                { year: '2024', title: 'Global Leader', desc: 'Serving 30+ countries' },
+                { year: '2026', title: 'Founded', desc: 'Established in Ramdaspally, Hyderabad' },
+                { year: 'Now', title: 'Quality Focus', desc: 'Stringent quality standards and precision manufacturing' },
+                { year: 'Now', title: 'Innovation', desc: 'Committed to advanced manufacturing processes' },
+                { year: 'Future', title: 'Growth', desc: 'Expanding capabilities in electronics sector' },
               ].map((event, i) => (
                 <GradientCard key={i}>
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
-                        {event.year.slice(-2)}
+                        {event.year === 'Now' ? '✓' : event.year === 'Future' ? '→' : event.year.slice(-2)}
                       </div>
                     </div>
                     <div className="flex-1">
                       <h4 className="font-bold font-montserrat text-slate-900 dark:text-white">
-                        {event.year} - {event.title}
+                        {event.year !== 'Now' && event.year !== 'Future' ? `${event.year} - ` : ''}{event.title}
                       </h4>
                       <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                         {event.desc}
