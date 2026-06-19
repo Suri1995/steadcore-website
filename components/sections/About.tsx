@@ -30,8 +30,8 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-20 ">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: About Content */}
           <div className="space-y-8">
@@ -88,7 +88,7 @@ export function About() {
           </div>
 
           {/* Right: Visual Timeline */}
-          <ScrollReveal animation="slide-in-right" delay={200}>
+          <ScrollReveal animation="slide-down" delay={200}>
             <div className="space-y-8">
               {[
                 { year: '2002', title: 'Founded', desc: 'Started with single facility' },

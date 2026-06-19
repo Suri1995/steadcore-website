@@ -38,8 +38,8 @@ export function Infrastructure() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900 to-slate-950 dark:from-slate-900 dark:to-black text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="sm:py-20 py-8 bg-gradient-to-b from-slate-900 to-slate-950 dark:from-slate-900 dark:to-black text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
         <ScrollReveal animation="fade-in" delay={0}>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">

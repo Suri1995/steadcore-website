@@ -59,7 +59,7 @@ export function Testimonials() {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+    <section className="sm:py-20 py-8 bg-slate-50 dark:bg-slate-900/50">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal animation="fade-in" delay={0}>
           <div className="text-center mb-16">
