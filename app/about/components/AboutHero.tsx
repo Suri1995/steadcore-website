@@ -1,15 +1,97 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+import { Calendar, Gauge, Activity, Cpu, Factory, MapPin, ArrowRight, type LucideIcon } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 
-const stats = [
-  { val: '2026', label: 'Year established' },
-  { val: '10,000 m²', label: 'Single-sided PCB capacity / mo.' },
-  { val: '3,000 m²', label: 'Double-sided PCB capacity / mo.' },
-  { val: '3', label: 'PCB types manufactured' },
-  { val: '7', label: 'Industries served' },
-  { val: 'Hyderabad', label: 'Manufacturing facility location' },
+type NumberStat = {
+  kind: 'number';
+  target: number;
+  suffix?: string;
+  noGrouping?: boolean;
+  label: string;
+  icon: LucideIcon;
+};
+
+type TextStat = {
+  kind: 'text';
+  display: string;
+  label: string;
+  icon: LucideIcon;
+};
+
+const stats: (NumberStat | TextStat)[] = [
+  { kind: 'number', target: 2026, noGrouping: true, label: 'Year established', icon: Calendar },
+  { kind: 'number', target: 10000, suffix: ' m²', label: 'Single-sided PCB capacity / mo.', icon: Gauge },
+  { kind: 'number', target: 3000, suffix: ' m²', label: 'Double-sided PCB capacity / mo.', icon: Activity },
+  { kind: 'number', target: 3, label: 'PCB types manufactured', icon: Cpu },
+  { kind: 'number', target: 7, label: 'Industries served', icon: Factory },
+  { kind: 'text', display: 'Hyderabad', label: 'Manufacturing facility location', icon: MapPin },
 ];
+
+/** Animates a number from 0 to target once it scrolls into view. Respects prefers-reduced-motion. */
+function useCountUp(target: number, duration = 1400) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasRun.current) {
+          hasRun.current = true;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.round(target * eased));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { value, ref };
+}
+
+function StatCard({ stat }: { stat: NumberStat | TextStat }) {
+  const isNumber = stat.kind === 'number';
+  const { value, ref } = useCountUp(isNumber ? stat.target : 0);
+  const Icon = stat.icon;
+  const displayValue = isNumber
+    ? `${stat.noGrouping ? value : value.toLocaleString()}${stat.suffix ?? ''}`
+    : stat.display;
+
+  return (
+    <div
+      className="bg-white dark:bg-slate-900/90 px-4 py-5 sm:px-6 sm:py-6 flex flex-col gap-2 hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-300 group"
+      role="figure"
+      aria-label={`${displayValue} — ${stat.label}`}
+    >
+      <Icon aria-hidden="true" strokeWidth={2.25} className="w-4 h-4 text-primary/60 group-hover:text-primary transition-colors duration-300" />
+      <span ref={ref} className="text-xl sm:text-2xl font-black font-montserrat text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+        {displayValue}
+      </span>
+      <span className="text-xs text-slate-500 dark:text-slate-400 leading-tight">
+        {stat.label}
+      </span>
+    </div>
+  );
+}
 
 export function AboutHero() {
   return (
@@ -18,6 +100,26 @@ export function AboutHero() {
       aria-labelledby="about-heading"
       className="relative pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
     >
+      <style>{`
+        @keyframes pcb-float {
+          0%, 100% { transform: translate(0, 0); }
+          50% { transform: translate(-16px, 18px); }
+        }
+        @keyframes pcb-trace-flow {
+          to { stroke-dashoffset: -40; }
+        }
+        @keyframes pcb-pulse {
+          0%, 100% { opacity: 0.55; }
+          50% { opacity: 1; }
+        }
+        .pcb-float { animation: pcb-float 9s ease-in-out infinite; }
+        .pcb-trace { stroke-dasharray: 6 6; animation: pcb-trace-flow 2.2s linear infinite; }
+        .pcb-chip-glow { animation: pcb-pulse 2.6s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .pcb-float, .pcb-trace, .pcb-chip-glow { animation: none !important; }
+        }
+      `}</style>
+
       {/* Abstract background pattern — decorative only, pure SVG (no image request) */}
       <div aria-hidden="true" className="absolute inset-0 z-0 opacity-40 dark:opacity-20">
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -34,6 +136,9 @@ export function AboutHero() {
           <rect width="100%" height="100%" fill="url(#glow)" />
         </svg>
       </div>
+
+      {/* Floating accent blob */}
+      <div aria-hidden="true" className="pcb-float absolute -top-24 -right-16 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-primary/10 blur-3xl z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1fr_2px_1fr] gap-10 lg:gap-16 items-start">
@@ -64,8 +169,25 @@ export function AboutHero() {
                 Steadcore Industries is a dedicated manufacturer of Single-Sided, Double-Sided, and Metal-Core PCBs, built to strengthen India's electronics supply chain with precision, reliability, and consistency.
               </p>
 
+              {/* Calls to action */}
+              <div className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950 transition-colors duration-300"
+                >
+                  Get a Quote
+                  <ArrowRight aria-hidden="true" className="w-4 h-4" />
+                </a>
+                <a
+                  href="/products"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950 transition-colors duration-300"
+                >
+                  Explore Capabilities
+                </a>
+              </div>
+
               {/* Founder credibility strip */}
-              <div className="mt-5 flex items-center gap-3 max-w-sm">
+              <div className="mt-7 flex items-center gap-3 max-w-sm">
                 <div
                   aria-hidden="true"
                   className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold font-montserrat text-sm shrink-0"
@@ -95,19 +217,7 @@ export function AboutHero() {
             <div>
               <div className="grid grid-cols-2 gap-px bg-gradient-to-br from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl overflow-hidden shadow-xl">
                 {stats.map((s) => (
-                  <div
-                    key={s.label}
-                    className="bg-white dark:bg-slate-900/90 px-4 py-5 sm:px-6 sm:py-6 flex flex-col gap-1 hover:bg-primary/5 transition-colors duration-300 group"
-                    role="figure"
-                    aria-label={`${s.val} — ${s.label}`}
-                  >
-                    <span className="text-xl sm:text-2xl font-black font-montserrat text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
-                      {s.val}
-                    </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 leading-tight">
-                      {s.label}
-                    </span>
-                  </div>
+                  <StatCard key={s.label} stat={s} />
                 ))}
               </div>
 
@@ -129,11 +239,15 @@ export function AboutHero() {
                       <stop offset="0%" stopColor="#22c55e" stopOpacity="0.28" />
                       <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
                     </radialGradient>
+                    <radialGradient id="chipGlow" cx="50%" cy="50%" r="60%">
+                      <stop offset="0%" stopColor="#22c55e" stopOpacity="0.35" />
+                      <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
+                    </radialGradient>
                   </defs>
                   <rect width="900" height="400" fill="url(#boardBg)" />
                   <rect width="900" height="400" fill="url(#boardGlow)" />
 
-                  <g stroke="#d4af6a" strokeWidth="2" fill="none" opacity="0.55">
+                  <g stroke="#d4af6a" strokeWidth="2" fill="none" opacity="0.6" className="pcb-trace">
                     <path d="M40 60 H 260 L 300 100 H 480" />
                     <path d="M40 140 H 180 L 220 180 H 420" />
                     <path d="M40 220 H 140" />
@@ -155,6 +269,7 @@ export function AboutHero() {
                     <circle cx="860" cy="320" r="5" />
                   </g>
 
+                  <circle cx="450" cy="200" r="110" fill="url(#chipGlow)" className="pcb-chip-glow" />
                   <rect x="380" y="140" width="140" height="120" rx="6" fill="#111827" stroke="#d4af6a" strokeWidth="2" />
                   <g stroke="#d4af6a" strokeWidth="2">
                     <line x1="380" y1="160" x2="358" y2="160" />
