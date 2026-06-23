@@ -36,6 +36,7 @@ export function Header() {
     { label: 'Products', href: '/products' },
     { label: 'Services', href: '/services' },
     { label: 'About', href: '/about' },
+    { label: 'Careers', href: '/careers' },
     { label: 'Contact', href: '/contact' },
   ];
 
