@@ -163,16 +163,7 @@ export function ContactHero() {
           We would be pleased to hear from you and discuss how Steadcore
           Industries can support your PCB manufacturing requirements. Whether you
           need product information, technical assistance, project consultation, or
-          a customized PCB solution, our team is ready to assist you.
-        </p>
-
-        {/* Sub paragraph */}
-        <p
-          className={[
-            "mx-auto mb-10 max-w-6xl text-sm leading-[1.7] text-muted-foreground/80 md:text-base",
-            !prefersReduced && "animate-[fadeUp_.55s_ease_.58s_both]",
-          ].join(" ")}
-        >
+          a customized PCB solution, our team is ready to assist you. 
           We are committed to providing prompt responses, professional support,
           and reliable service to help meet your business needs for inquiries,
           quotations, partnerships, or any information regarding our products and

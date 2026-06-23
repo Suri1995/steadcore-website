@@ -127,8 +127,8 @@ export function AboutStory() {
                     Manufacturing Capacity
                   </p>
                   {[
-                    { num: '10,000', unit: 'sqm / mo', label: 'Single-Sided PCB' },
-                    { num: '3,000',  unit: 'sqm / mo', label: 'Double-Sided PCB' },
+                    { num: '10,000', unit: 'sqm', label: 'Single-Sided PCB' },
+                    { num: '3,000',  unit: 'sqm', label: 'Double-Sided PCB' },
                   ].map(({ num, unit, label }) => (
                     <div key={label}
                       className="rounded-[var(--radius-md)] border border-border bg-card px-4 py-3.5 flex items-center gap-4">
@@ -223,9 +223,7 @@ export function AboutStory() {
                     style={{ fontSize: 'clamp(20px, 3.5vw, 36px)' }}>
                     {/* "Every" in primary green — gives the eye an entry point */}
                     <span className="text-primary">"Every</span>
-                    <span className="text-white"> board that leaves Ramdaspally has to meet the
-                    standard I'd have wanted in the lab — that's not a tagline, it's how we built
-                    this company."</span>
+                    <span className="text-white"> {`board that leaves our facility reflects our commitment to quality. It’s not just a tagline it’s the standard we uphold every day."`}</span>
                   </p>
                 </blockquote>
 
@@ -246,47 +244,12 @@ export function AboutStory() {
                     </div>
                   </div>
                   <div className="border-l border-white/15 pl-4">
-                    <p className="text-white font-semibold text-sm font-montserrat">Dr. Sri Lakshmi E</p>
-                    <p className="text-white/45 text-xs mt-0.5">Founder & Director · Steadcore Industries</p>
+                    <p className="text-white font-semibold text-xl font-montserrat">Dr. Sri Lakshmi E</p>
+                    <p className="text-white/45 text-sm mt-0.5">Ph.D. , IIT (BHU) Varanasi, Founder & Director, Steadcore Industries</p>
                   </div>
                 </figcaption>
               </div>
-
-              {/* ── Credentials strip — horizontal across bottom ─────── */}
-              <div className="relative z-10 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3">
-                {credentials.map(({ label, degree, field, institute }, i) => (
-                  <div
-                    key={label}
-                    className={[
-                      'px-8 py-6 sm:px-10 flex flex-col gap-1.5',
-                      i > 0 && 'border-t sm:border-t-0 sm:border-l border-white/10',
-                      'group hover:bg-white/[0.025] transition-colors duration-200',
-                    ].join(' ')}
-                  >
-                    {/* Label row */}
-                    <div className="flex items-center gap-2">
-                      <GraduationIcon className="w-3.5 h-3.5 text-primary/70 flex-shrink-0" />
-                      <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-primary/70">
-                        {label}
-                      </span>
-                    </div>
-                    {/* Degree */}
-                    <div className="flex items-baseline gap-1.5 flex-wrap">
-                      <span className="font-montserrat text-base font-bold text-white leading-none">
-                        {degree}
-                      </span>
-                      <span className="text-xs text-white/60 leading-tight">— {field}</span>
-                    </div>
-                    {/* Institute */}
-                    <p className="text-[11px] text-white/35 font-medium">{institute}</p>
-                    {/* Hover accent line */}
-                    <span
-                      className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 rounded"
-                      aria-hidden="true"
-                    />
-                  </div>
-                ))}
-              </div>
+             
 
               {/* Bottom PCB trace */}
               <svg

@@ -22,8 +22,8 @@ type TextStat = {
 
 const stats: (NumberStat | TextStat)[] = [
   { kind: 'number', target: 2026, noGrouping: true, label: 'Year established', icon: Calendar },
-  { kind: 'number', target: 10000, suffix: ' m²', label: 'Single-sided PCB capacity / mo.', icon: Gauge },
-  { kind: 'number', target: 3000, suffix: ' m²', label: 'Double-sided PCB capacity / mo.', icon: Activity },
+  { kind: 'number', target: 10000, suffix: ' m²', label: 'Single-sided PCB capacity', icon: Gauge },
+  { kind: 'number', target: 3000, suffix: ' m²', label: 'Double-sided PCB capacity', icon: Activity },
   { kind: 'number', target: 3, label: 'PCB types manufactured', icon: Cpu },
   { kind: 'number', target: 7, label: 'Sectors', icon: Factory },
   { kind: 'text', display: 'Hyderabad', label: 'Manufacturing facility location', icon: MapPin },
@@ -157,13 +157,6 @@ export function AboutHero() {
                 Engineering the circuits powering{' '}
                 <span className="text-primary">India's electronics.</span>
               </h1>
-
-              <div className="inline-flex items-baseline gap-3 mb-8">
-                <span className="text-4xl sm:text-5xl font-black font-montserrat text-primary">
-                  2026
-                </span>
-                <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">— founded in Ramdaspally, Hyderabad</span>
-              </div>
 
               <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50">
                 Steadcore Industries is a dedicated manufacturer of Single-Sided, Double-Sided, and Metal-Core PCBs, built to strengthen India's electronics supply chain with precision, reliability, and consistency.

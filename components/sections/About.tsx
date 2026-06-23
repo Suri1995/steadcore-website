@@ -32,7 +32,7 @@ const capabilities = [
   {
     Icon: Truck,
     title: 'Reliable Production & Delivery',
-    description: '10,000 sqm/mo (Single-Sided) and 3,000 sqm/mo (Double-Sided) — consistent quality at any scale with on-time delivery.',
+    description: '10,000 sqm (Single-Sided) and 3,000 sqm (Double-Sided) — consistent quality at any scale with on-time delivery.',
   },
   {
     Icon: HeartHandshake,
@@ -54,7 +54,7 @@ const milestones = [
   },
   {
     title: 'Production Launch',
-    desc: '10,000 sqm/mo Single-Sided and 3,000 sqm/mo Double-Sided PCB capacity achieved',
+    desc: '10,000 sqm Single-Sided and 3,000 sqm Double-Sided PCB capacity achieved',
     tag: 'Capacity',
   },
   {

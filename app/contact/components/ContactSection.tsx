@@ -114,16 +114,6 @@ const CONTACT_INFO = [
     ),
   },
   {
-    Icon: GlobeIcon,
-    label: "Website",
-    content: (
-      <a href="https://www.steadcore.in" target="_blank" rel="noopener noreferrer" className="text-white/85 hover:text-white transition-colors underline-offset-4 hover:underline text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-white rounded-sm">
-        www.steadcore.in
-        <span className="sr-only"> (opens in a new tab)</span>
-      </a>
-    ),
-  },
-  {
     Icon: ClockIcon,
     label: "Business Hours",
     content: (

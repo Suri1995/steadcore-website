@@ -41,7 +41,7 @@ const features = [
     icon: Truck,
     title: 'Reliable Production & Delivery',
     description:
-      '10,000 sqm/month (Single-Sided) and 3,000 sqm/month (Double-Sided) capacity — consistent quality and on-time delivery at any production scale.',
+      '10,000 sqm (Single-Sided) and 3,000 sqm (Double-Sided) capacity — consistent quality and on-time delivery at any production scale.',
   },
   {
     icon: HeartHandshake,
@@ -64,20 +64,20 @@ const products = [
     category: 'Single-Sided PCB',
     tagline: 'Simple. Reliable. Cost-Effective.',
     description:
-      'Ideal for basic electronic applications with components mounted on one side. Capacity: 10,000 sqm/month.',
+      'Ideal for basic electronic applications with components mounted on one side. Capacity: 10,000 sqm.',
     icon: CircuitBoard,
     slug: '/products/single-sided-pcb',
-    capacity: '10,000 sqm/mo',
+    capacity: '10,000 sqm',
   },
   {
     id: 'double-sided-pcb',
     category: 'Double-Sided PCB',
     tagline: 'Enhanced Circuitry. Maximum Efficiency.',
     description:
-      'Advanced connectivity with components on both sides for complex, high-density applications. Capacity: 3,000 sqm/month.',
+      'Advanced connectivity with components on both sides for complex, high-density applications. Capacity: 3,000 sqm.',
     icon: Layers,
     slug: '/products/double-sided-pcb',
-    capacity: '3,000 sqm/mo',
+    capacity: '3,000 sqm',
   },
   {
     id: 'metal-clad-pcb',
