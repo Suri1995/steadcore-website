@@ -4,220 +4,190 @@ import React from 'react';
 import { GradientCard } from '../animated/GradientCard';
 import { ScrollReveal } from '../animated/ScrollReveal';
 import Link from 'next/link';
-import { 
-  Zap, 
-  Target, 
-  Shield, 
-  Leaf, 
-  Microscope, 
-  Award,
+import {
   CircuitBoard,
   Layers,
   Thermometer,
-  ArrowRight
+  ArrowRight,
+  BadgeCheck,
+  GraduationCap,
+  Factory,
+  Truck,
+  HeartHandshake,
+  TrendingUp,
 } from 'lucide-react';
 
+/* ─── Why Choose Us features — real content ───────────────────────── */
 const features = [
   {
-    icon: Zap,
-    title: 'High Performance',
-    description: 'Ultra-fast signal transmission with minimal latency and maximum efficiency.',
+    icon: BadgeCheck,
+    title: 'Quality-Focused Manufacturing',
+    description:
+      'Stringent quality control at every stage ensures every PCB meets customer specifications and industry standards for performance, durability, and reliability.',
   },
   {
-    icon: Target,
-    title: 'Precision Engineering',
-    description: 'Micro-level accuracy in every trace and component placement.',
+    icon: GraduationCap,
+    title: 'Technical Expertise & Leadership',
+    description:
+      'Founded by Dr. Sri Lakshmi E, Ph.D. (IIT BHU), our engineering-led approach delivers PCB solutions grounded in deep technical knowledge and innovation.',
   },
   {
-    icon: Shield,
-    title: 'Advanced Protection',
-    description: 'Multi-layer shielding and thermal management systems.',
+    icon: Factory,
+    title: 'Diverse PCB Capabilities',
+    description:
+      'Single-Sided, Double-Sided, and Metal-Core PCBs for LED lighting, consumer electronics, industrial automation, power electronics, and beyond.',
   },
   {
-    icon: Leaf,
-    title: 'Eco-Friendly',
-    description: 'Sustainable manufacturing processes with minimal waste.',
+    icon: Truck,
+    title: 'Reliable Production & Delivery',
+    description:
+      '10,000 sqm/month (Single-Sided) and 3,000 sqm/month (Double-Sided) capacity — consistent quality and on-time delivery at any production scale.',
   },
   {
-    icon: Microscope,
-    title: 'R&D Innovation',
-    description: 'Continuous research for cutting-edge PCB technology.',
+    icon: HeartHandshake,
+    title: 'Customer-Centric Approach',
+    description:
+      'We collaborate closely with customers to deliver customized PCB solutions that balance quality, performance, and cost-effectiveness for their unique needs.',
   },
   {
-    icon: Award,
-    title: 'Quality Certified',
-    description: 'ISO 9001 & IPC standards compliance guaranteed.',
+    icon: TrendingUp,
+    title: 'Commitment to Continuous Improvement',
+    description:
+      'Ongoing investment in process improvement and operational excellence keeps our products aligned with the latest industry requirements.',
   },
 ];
 
+/* ─── Products ────────────────────────────────────────────────────── */
 const products = [
   {
     id: 'single-sided-pcb',
     category: 'Single-Sided PCB',
     tagline: 'Simple. Reliable. Cost-Effective.',
-    description: 'Ideal for basic electronic applications with components mounted on one side.',
+    description:
+      'Ideal for basic electronic applications with components mounted on one side. Capacity: 10,000 sqm/month.',
     icon: CircuitBoard,
     slug: '/products/single-sided-pcb',
+    capacity: '10,000 sqm/mo',
   },
   {
     id: 'double-sided-pcb',
     category: 'Double-Sided PCB',
     tagline: 'Enhanced Circuitry. Maximum Efficiency.',
-    description: 'Advanced connectivity with components on both sides for complex applications.',
+    description:
+      'Advanced connectivity with components on both sides for complex, high-density applications. Capacity: 3,000 sqm/month.',
     icon: Layers,
     slug: '/products/double-sided-pcb',
+    capacity: '3,000 sqm/mo',
   },
   {
     id: 'metal-clad-pcb',
-    category: 'Metal-Clad PCB',
+    category: 'Metal-Core PCB',
     tagline: 'Superior Thermal Management. Unmatched Durability.',
-    description: 'Aluminum-backed boards designed for high-power and heat-sensitive applications.',
+    description:
+      'Aluminum-backed boards engineered for high-power and heat-sensitive applications including LEDs and power electronics.',
     icon: Thermometer,
     slug: '/products/metal-clad-pcb',
+    capacity: 'Custom runs',
   },
 ];
 
+
 export function Features() {
   return (
-    <section 
-      id="products" 
-      className="sm:py-20 py-8 bg-primary/5 dark:bg-primary/10 relative overflow-hidden"
+    <section
+      id="products"
+      className="sm:py-24 py-12 bg-primary/5 dark:bg-primary/10 relative overflow-hidden"
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+      {/* Ambient blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/8 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/8 dark:bg-accent/8 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 relative">
-        {/* Header */}
-        <ScrollReveal animation="fade-in" delay={0}>
-          <div className="text-center mb-16">
-            <div className="inline-block">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-accent/10 text-accent border border-accent/20">
-                Why Choose Us
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold font-montserrat mt-4 mb-4">
-              <span className="text-primary dark:text-primary-light">Excellence in</span>
-              <span className="text-accent"> Every Layer</span>
-            </h2>
-            <p className="text-xl text-secondary dark:text-secondary-light max-w-3xl mx-auto leading-relaxed">
-              Industry-leading PCB manufacturing with proven expertise, cutting-edge technology, 
-              and unwavering commitment to quality.
-            </p>
-          </div>
-        </ScrollReveal>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-24">
-          {features.map((feature, i) => (
-            <ScrollReveal
-              key={i}
-              animation="scale-up"
-              delay={i * 50}
-              className="h-full"
-            >
-              <GradientCard className="h-full group hover:shadow-2xl transition-all duration-300 border border-primary/10 dark:border-primary/20">
-                <div className="flex flex-col items-start">
-                  <div className={`
-                    p-3 rounded-xl bg-accent/10 text-accent
-                    shadow-lg mb-4 group-hover:scale-110 group-hover:bg-accent/20 
-                    transition-all duration-300
-                  `}>
-                    <feature.icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold font-montserrat mb-3 text-primary dark:text-primary-light">
-                    {feature.title}
-                  </h3>
-                  <p className="text-secondary dark:text-secondary-light leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </GradientCard>
-            </ScrollReveal>
-          ))}
-        </div>
+       
 
-        {/* Products Section */}
+        {/* ── PRODUCTS SECTION ───────────────────────────────────── */}
         <div className="relative">
           <ScrollReveal animation="fade-in" delay={0}>
             <div className="text-center mb-12">
-              <div className="inline-block">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-secondary/10 text-secondary border border-secondary/20">
-                  Our Product Range
-                </span>
-              </div>
-              <h3 className="text-3xl md:text-5xl font-bold font-montserrat mt-4 mb-4">
-                <span className="text-primary dark:text-primary-light">Precision PCB</span>
-                <span className="text-secondary"> Solutions</span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-secondary/10 text-secondary dark:bg-accent/10 dark:text-accent border border-secondary/20 dark:border-accent/20 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" aria-hidden="true" />
+                Our Product Range
+              </span>
+
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat mt-2 mb-4 leading-tight">
+                <span className="text-foreground">Precision PCB</span>
+                <span className="text-secondary dark:text-accent"> Solutions</span>
               </h3>
-              <p className="text-lg text-secondary dark:text-secondary-light max-w-3xl mx-auto leading-relaxed">
-                From simple single-sided boards to advanced metal-clad solutions, 
-                we deliver precision-engineered PCBs for every industry and application.
+
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                From simple single-sided boards to advanced metal-core solutions,
+                we deliver precision-engineered PCBs for every industry and application —
+                with the capacity and consistency your production demands.
               </p>
             </div>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, i) => (
-              <ScrollReveal
-                key={i}
-                animation="slide-up"
-                delay={i * 50}
-                className="h-full"
-              >
-                <Link href={product.slug} className="block h-full group">
-                  <div
-                    className={`
-                      relative h-80 rounded-2xl overflow-hidden
-                      bg-gradient-to-br from-primary to-primary/80 dark:from-primary-dark dark:to-primary/90
-                      shadow-lg hover:shadow-2xl transition-all duration-500
-                      hover:scale-[1.03] hover:-translate-y-1
-                      border border-primary/10 dark:border-primary/20
-                    `}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent" />
-                    
+              <ScrollReveal key={i} animation="slide-up" delay={i * 60} className="h-full">
+                <Link href={product.slug} className="block h-full group" aria-label={`Learn more about ${product.category}`}>
+                  <div className="relative h-[340px] rounded-2xl overflow-hidden
+                    bg-gradient-to-br from-primary to-primary/80
+                    shadow-lg hover:shadow-2xl transition-all duration-500
+                    hover:scale-[1.025] hover:-translate-y-1
+                    border border-primary/10">
+
+                    {/* gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-primary/30 to-transparent" aria-hidden="true" />
+
+                    {/* hover tint */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 via-transparent to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
+
+                    {/* top accent bar */}
+                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-secondary to-primary
+                      scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" aria-hidden="true" />
+
+                    {/* card body */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                      {/* Icon */}
-                      <div className="mb-5 p-4 bg-white/15 backdrop-blur-sm rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                        <product.icon className="w-10 h-10 text-white" />
+                      {/* icon */}
+                      <div className="mb-5 p-4 bg-white/15 backdrop-blur-sm rounded-2xl
+                        group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300">
+                        <product.icon className="w-9 h-9 text-white" aria-hidden="true" />
                       </div>
-                      
-                      {/* Title */}
-                      <h4 className="text-2xl font-bold font-montserrat text-white mb-1">
+
+                      {/* capacity badge */}
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/15 text-white/80 border border-white/20 mb-3">
+                        {product.capacity}
+                      </span>
+
+                      <h4 className="text-xl font-bold font-montserrat text-white mb-1 leading-snug">
                         {product.category}
                       </h4>
-                      
-                      {/* Tagline */}
-                      <p className="text-accent text-sm font-semibold mb-3">
+                      <p className="text-secondary dark:text-accent text-xs font-semibold mb-3 brightness-150">
                         {product.tagline}
                       </p>
-                      
-                      {/* Description */}
-                      <p className="text-white/80 text-sm leading-relaxed max-w-xs">
+                      <p className="text-white/75 text-sm leading-relaxed max-w-[220px]">
                         {product.description}
                       </p>
-
-                      {/* Arrow indicator */}
-                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white/60 group-hover:text-white transition-colors duration-300">
-                        <span className="text-sm font-medium">Learn More</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      </div>
                     </div>
-                    
-                    {/* Hover overlay accent */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Top accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                    {/* bottom CTA */}
+                    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-1.5
+                      text-white/50 group-hover:text-white transition-all duration-300">
+                      <span className="text-xs font-semibold tracking-wide">Learn More</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
+                    </div>
                   </div>
                 </Link>
               </ScrollReveal>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

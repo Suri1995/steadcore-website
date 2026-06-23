@@ -17,8 +17,8 @@ export default function Home() {
     <main className="w-full overflow-hidden">
       <Header />
       <Hero />
-      <Features />
       <About />
+      <Features />
       <Infrastructure />
       <Testimonials />
       <CTA />

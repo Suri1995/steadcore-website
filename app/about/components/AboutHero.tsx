@@ -25,7 +25,7 @@ const stats: (NumberStat | TextStat)[] = [
   { kind: 'number', target: 10000, suffix: ' m²', label: 'Single-sided PCB capacity / mo.', icon: Gauge },
   { kind: 'number', target: 3000, suffix: ' m²', label: 'Double-sided PCB capacity / mo.', icon: Activity },
   { kind: 'number', target: 3, label: 'PCB types manufactured', icon: Cpu },
-  { kind: 'number', target: 7, label: 'Industries served', icon: Factory },
+  { kind: 'number', target: 7, label: 'Sectors', icon: Factory },
   { kind: 'text', display: 'Hyderabad', label: 'Manufacturing facility location', icon: MapPin },
 ];
 
