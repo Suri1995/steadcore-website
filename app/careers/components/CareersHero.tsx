@@ -24,52 +24,68 @@ const MailIcon = React.memo(({ className, style }: IconProps) => (
 ));
 MailIcon.displayName = 'MailIcon';
 
-const MapPinIcon = React.memo(({ className, style }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" className={className} style={style} aria-hidden="true">
-    <path d="M12 21s-7-7.16-7-12a7 7 0 1 1 14 0c0 4.84-7 12-7 12Z"/>
-    <circle cx="12" cy="9" r="2.5"/>
-  </svg>
-));
-MapPinIcon.displayName = 'MapPinIcon';
+// ─── Decorative circuit animation ───────────────────────────────────────
+// Pure SVG + CSS: no JS animation loop, no external assets, ~2KB of markup.
+// Only stroke-dashoffset / opacity / transform are animated (cheap for the
+// compositor), everything is aria-hidden (purely decorative — the headline
+// and copy already carry the section's meaning), and every animation is
+// switched off in favor of a static end-state under prefers-reduced-motion.
+const TRACES = [
+  // [x1, y1, x2, y2, delay]
+  { d: 'M140,140 L140,34', delay: 0.15 },
+  { d: 'M160,140 L160,20', delay: 0.3 },
+  { d: 'M140,200 L140,306', delay: 0.2 },
+  { d: 'M160,200 L160,320', delay: 0.35 },
+  { d: 'M120,155 L28,155', delay: 0.25 },
+  { d: 'M120,185 L14,185', delay: 0.4 },
+  { d: 'M180,155 L272,155', delay: 0.25 },
+  { d: 'M180,185 L286,185', delay: 0.4 },
+] as const;
 
-const UsersIcon = React.memo(({ className, style }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" className={className} style={style} aria-hidden="true">
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-  </svg>
-));
-UsersIcon.displayName = 'UsersIcon';
-
-const CalendarIcon = React.memo(({ className, style }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" className={className} style={style} aria-hidden="true">
-    <rect x="3" y="4" width="18" height="18" rx="2"/>
-    <path d="M16 2v4M8 2v4M3 10h18"/>
-  </svg>
-));
-CalendarIcon.displayName = 'CalendarIcon';
-
-const AcademicIcon = React.memo(({ className, style }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" className={className} style={style} aria-hidden="true">
-    <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-));
-AcademicIcon.displayName = 'AcademicIcon';
-
-// ─── Constants ────────────────────────────────────────────────────────
-const TOTAL_ROLES = 7;
-
-const stats = [
-  // { num: `${TOTAL_ROLES}`, label: 'Open roles',        Icon: UsersIcon },
-  { num: '2026',           label: 'Year founded',       Icon: CalendarIcon },
-  { num: 'Hyderabad',      label: 'Location',           Icon: MapPinIcon },
-  { num: 'IIT BHU',        label: 'Founder background', Icon: AcademicIcon },
+const PADS: Array<[number, number, number]> = [
+  [140, 30, 0.9], [160, 16, 1.05], [140, 310, 0.95], [160, 324, 1.1],
+  [24, 155, 1.0], [10, 185, 1.15], [276, 155, 1.0], [290, 185, 1.15],
 ];
+
+const CircuitAnimation = React.memo(() => (
+  <div className="ch-visual" aria-hidden="true">
+    <svg viewBox="0 0 300 340" className="w-full h-auto" role="presentation">
+      {/* soft glow behind the chip */}
+      <circle cx="150" cy="170" r="46" fill="var(--primary)" className="ch-glow" />
+
+      {TRACES.map((t, i) => (
+        <path
+          key={i}
+          d={t.d}
+          fill="none"
+          stroke={i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)'}
+          strokeWidth="2"
+          strokeLinecap="round"
+          pathLength={1}
+          className="ch-trace"
+          style={{ ['--d' as string]: `${t.delay}s` }}
+        />
+      ))}
+
+      {PADS.map(([cx, cy, delay], i) => (
+        <circle
+          key={i}
+          cx={cx}
+          cy={cy}
+          r="4"
+          fill={i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)'}
+          className="ch-pad"
+          style={{ ['--d' as string]: `${delay}s` }}
+        />
+      ))}
+
+      {/* chip */}
+      <rect x="118" y="138" width="64" height="64" rx="8" fill="var(--card)" stroke="var(--border)" strokeWidth="1.5" className="ch-chip" />
+      <rect x="134" y="154" width="32" height="32" rx="3" fill="none" stroke="var(--primary)" strokeWidth="1.5" className="ch-chip" style={{ animationDelay: '1.05s' }} />
+    </svg>
+  </div>
+));
+CircuitAnimation.displayName = 'CircuitAnimation';
 
 // ─── Main Component ──────────────────────────────────────────────────
 export const CareersHero = React.memo(() => {
@@ -123,12 +139,51 @@ export const CareersHero = React.memo(() => {
         }
         .ch-cursor { animation: ch-blink 1.1s step-end infinite; }
 
+        /* ── Circuit animation (right-side replacement) ── */
+        @keyframes ch-draw   { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+        @keyframes ch-pad-in { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+        @keyframes ch-pad-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+        @keyframes ch-chip-pop  { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes ch-glow-pulse { 0%, 100% { opacity: 0.16; } 50% { opacity: 0.32; } }
+
+        .ch-visual { width: 100%; }
+        .ch-trace {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 1;
+          transform-origin: center;
+          animation: ch-draw 0.8s cubic-bezier(.4,0,.2,1) var(--d, 0s) both;
+        }
+        .ch-pad {
+          transform-origin: center;
+          transform-box: fill-box;
+          opacity: 0;
+          animation:
+            ch-pad-in 0.35s ease var(--d, 0s) both,
+            ch-pad-pulse 2.6s ease-in-out calc(var(--d, 0s) + 0.5s) infinite;
+        }
+        .ch-chip {
+          opacity: 0;
+          transform-origin: center;
+          transform-box: fill-box;
+          animation: ch-chip-pop 0.5s ease 0.85s both;
+        }
+        .ch-glow {
+          opacity: 0.16;
+          transform-origin: center;
+          transform-box: fill-box;
+          filter: blur(20px);
+          animation: ch-glow-pulse 3.2s ease-in-out 1.1s infinite;
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .ch-v0,.ch-v1,.ch-v2,.ch-v3,.ch-v4,.ch-v5 {
             animation: none !important; opacity: 1 !important;
           }
           .ch-tline { animation: none !important; stroke-dashoffset: 0 !important; }
           .ch-cursor { animation: none !important; }
+          .ch-trace { animation: none !important; stroke-dashoffset: 0 !important; }
+          .ch-pad, .ch-chip { animation: none !important; opacity: 1 !important; transform: none !important; }
+          .ch-glow { animation: none !important; opacity: 0.16 !important; }
         }
 
         /* ── Responsive adjustments ── */
@@ -137,8 +192,7 @@ export const CareersHero = React.memo(() => {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
           }
-          .ch-stats-desktop { display: none !important; }
-          .ch-stats-mobile { display: flex !important; }
+          .ch-visual { max-width: 240px; margin: 0.5rem auto 0; }
           .ch-hero-headline { font-size: clamp(28px, 8vw, 42px) !important; }
         }
 
@@ -147,17 +201,13 @@ export const CareersHero = React.memo(() => {
             grid-template-columns: 1fr 240px !important;
             gap: 2rem !important;
           }
-          .ch-stats-desktop { display: flex !important; }
-          .ch-stats-mobile { display: none !important; }
         }
 
         @media (min-width: 1025px) {
           .ch-hero-grid {
-            grid-template-columns: 1fr 280px !important;
+            grid-template-columns: 1fr 300px !important;
             gap: 3rem !important;
           }
-          .ch-stats-desktop { display: flex !important; }
-          .ch-stats-mobile { display: none !important; }
         }
       `}</style>
 
@@ -192,7 +242,7 @@ export const CareersHero = React.memo(() => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16">
           
           {/* Grid Layout */}
-          <div className="ch-hero-grid grid lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-start">
+          <div className="ch-hero-grid grid lg:grid-cols-[1fr_300px] gap-8 lg:gap-12 items-center">
             
             {/* ── LEFT COLUMN ── */}
             <div>
@@ -251,68 +301,10 @@ export const CareersHero = React.memo(() => {
               </div>
             </div>
 
-            {/* ── RIGHT COLUMN: Stat Cards ── */}
-            <div className={`ch-stats-desktop hidden lg:flex flex-col gap-3 pt-1 ${visible ? 'ch-v4' : 'opacity-0'}`}>
-              
-              {/* "At a glance" label */}
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
-                  At a glance
-                </span>
-                <div className="flex-1 h-px bg-border" />
-              </div>
-
-              {stats.map(({ num, label, Icon }, i) => (
-                <div
-                  key={label}
-                  className="group flex items-center gap-3 rounded-xl border px-4 py-3 transition-all hover:shadow-sm"
-                  style={{
-                    borderColor: i % 2 === 0 ? 'rgba(11,122,42,0.15)' : 'var(--border)',
-                    background: i % 2 === 0 ? 'rgba(11,122,42,0.03)' : 'var(--card)',
-                  }}
-                >
-                  <div
-                    className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
-                    style={{
-                      background: i % 2 === 0 ? 'rgba(11,122,42,0.08)' : 'rgba(0,59,142,0.06)',
-                    }}
-                  >
-                    <Icon
-                      className="w-3.5 h-3.5"
-                      style={{ color: i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)' }}
-                    />
-                  </div>
-                  <div>
-                    <p className="font-montserrat font-extrabold text-base leading-none text-foreground">
-                      {num}
-                    </p>
-                    <p className="text-[11px] mt-0.5 text-muted-foreground">{label}</p>
-                  </div>
-                </div>
-              ))}
-
-              {/* Bottom note */}
-              <p className="text-[10px] mt-2 leading-relaxed text-muted-foreground opacity-70">
-                All roles are based at our facility in Ramdaspally, Hyderabad.
-              </p>
+            {/* ── RIGHT COLUMN: decorative circuit animation ── */}
+            <div className={visible ? 'ch-v4' : 'opacity-0'}>
+              <CircuitAnimation />
             </div>
-          </div>
-
-          {/* ── Mobile & Tablet Stat Pills ── */}
-          <div className={`ch-stats-mobile hidden lg:hidden flex-wrap gap-2 mt-6 ${visible ? 'ch-v3' : 'opacity-0'}`}>
-            {stats.map(({ num, label, Icon }, i) => (
-              <div
-                key={label}
-                className="flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs"
-              >
-                <Icon 
-                  className="w-3 h-3" 
-                  style={{ color: i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)' }} 
-                />
-                <span className="font-montserrat font-bold text-xs">{num}</span>
-                <span className="text-[10px] text-muted-foreground">{label}</span>
-              </div>
-            ))}
           </div>
         </div>
 
