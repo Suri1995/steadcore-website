@@ -19,7 +19,7 @@ export default function Careers() {
       <Header />
       <CareersHero />
       <CareersWhyJoin />
-      <CareersRoles />
+      {/* <CareersRoles /> */}
       <CareersProcess />
       <CareersCTA />
       <Footer />

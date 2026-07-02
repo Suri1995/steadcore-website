@@ -149,8 +149,7 @@ export function AboutStory() {
             <div className="space-y-6">
               <Reveal delay={0.05}>
                 <p className="text-xl text-foreground leading-relaxed font-medium">
-                  Steadcore Industries was founded in 2026 by Dr. Sri Lakshmi E, who holds a Ph.D.
-                  in Electrical and Electronics Engineering from IIT (BHU), Varanasi — built on the
+                  Steadcore Industries was founded in 2026, and built on the
                   conviction that India's electronics sector needed a PCB manufacturer that paired
                   academic rigor with dependable, cost-effective delivery.
                 </p>
@@ -228,9 +227,9 @@ export function AboutStory() {
                 </blockquote>
 
                 {/* Attribution — identity block */}
-                <figcaption className="flex items-center gap-4">
+                {/* <figcaption className="flex items-center gap-4"> */}
                   {/* Monogram — gradient ring */}
-                  <div className="relative flex-shrink-0">
+                  {/* <div className="relative flex-shrink-0">
                     <div
                       className="absolute inset-[-2px] rounded-full"
                       style={{ background: 'linear-gradient(135deg, #0B7A2A, #003B8E)' }}
@@ -247,7 +246,7 @@ export function AboutStory() {
                     <p className="text-white font-semibold text-xl font-montserrat">Dr. Sri Lakshmi E</p>
                     <p className="text-white/45 text-sm mt-0.5">Ph.D. , IIT (BHU) Varanasi, Founder & Director, Steadcore Industries</p>
                   </div>
-                </figcaption>
+                </figcaption> */}
               </div>
              
 
@@ -276,12 +275,12 @@ export function AboutStory() {
       </section>
 
       {/* ══ SECTION 2 — OUR TEAM ═══════════════════════════════════════ */}
-      <section aria-labelledby="team-heading" className="py-24">
+      {/* <section aria-labelledby="team-heading" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[260px_1fr] gap-12 lg:gap-20 items-start">
+          <div className="grid lg:grid-cols-[260px_1fr] gap-12 lg:gap-20 items-start"> */}
 
             {/* Sticky sidebar */}
-            <Reveal from="left">
+            {/* <Reveal from="left">
               <div className="lg:sticky lg:top-32 space-y-6">
                 <div>
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary dark:bg-accent/10 dark:text-accent text-[10px] font-bold uppercase tracking-[0.14em] border border-secondary/20 dark:border-accent/20 mb-4">
@@ -293,10 +292,10 @@ export function AboutStory() {
                     <span className="text-foreground">Team</span>
                   </h2>
                   <span className="mt-4 block w-10 h-[3px] rounded-full bg-gradient-to-r from-secondary to-primary dark:from-accent" aria-hidden="true" />
-                </div>
+                </div> */}
 
                 {/* Departments list */}
-                <div className="space-y-2.5">
+                {/* <div className="space-y-2.5">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">
                     Our Departments
                   </p>
@@ -312,10 +311,10 @@ export function AboutStory() {
                   </ul>
                 </div>
               </div>
-            </Reveal>
+            </Reveal> */}
 
             {/* Team prose + pillars */}
-            <div className="space-y-7">
+            {/* <div className="space-y-7">
               <Reveal delay={0.05}>
                 <p className="text-xl text-foreground leading-relaxed font-medium">
                   At Steadcore Industries, our strength lies in the knowledge, dedication, and
@@ -338,10 +337,10 @@ export function AboutStory() {
                   ensuring every product leaves the facility with precision, consistency, and
                   adherence to our quality standards.
                 </p>
-              </Reveal>
+              </Reveal> */}
 
               {/* Culture pillars */}
-              <Reveal delay={0.2}>
+              {/* <Reveal delay={0.2}>
                 <div className="grid sm:grid-cols-3 gap-4 pt-2">
                   {pillars.map(({ label, desc }, i) => (
                     <div
@@ -358,10 +357,10 @@ export function AboutStory() {
                     </div>
                   ))}
                 </div>
-              </Reveal>
+              </Reveal> */}
 
               {/* Closing statement */}
-              <Reveal delay={0.25}>
+              {/* <Reveal delay={0.25}>
                 <div className="rounded-[var(--radius-lg)] border border-primary/15 bg-primary/5 dark:bg-primary/10 px-6 py-5">
                   <p className="text-sm text-foreground leading-relaxed">
                     <span className="font-semibold text-primary">Our people are our greatest asset.</span>{' '}
@@ -374,7 +373,7 @@ export function AboutStory() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

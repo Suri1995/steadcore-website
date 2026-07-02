@@ -17,46 +17,6 @@ import {
   TrendingUp,
 } from 'lucide-react';
 
-/* ─── Why Choose Us features — real content ───────────────────────── */
-const features = [
-  {
-    icon: BadgeCheck,
-    title: 'Quality-Focused Manufacturing',
-    description:
-      'Stringent quality control at every stage ensures every PCB meets customer specifications and industry standards for performance, durability, and reliability.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Technical Expertise & Leadership',
-    description:
-      'Founded by Dr. Sri Lakshmi E, Ph.D. (IIT BHU), our engineering-led approach delivers PCB solutions grounded in deep technical knowledge and innovation.',
-  },
-  {
-    icon: Factory,
-    title: 'Diverse PCB Capabilities',
-    description:
-      'Single-Sided, Double-Sided, and Metal-Core PCBs for LED lighting, consumer electronics, industrial automation, power electronics, and beyond.',
-  },
-  {
-    icon: Truck,
-    title: 'Reliable Production & Delivery',
-    description:
-      '10,000 sqm (Single-Sided) and 3,000 sqm (Double-Sided) capacity — consistent quality and on-time delivery at any production scale.',
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Customer-Centric Approach',
-    description:
-      'We collaborate closely with customers to deliver customized PCB solutions that balance quality, performance, and cost-effectiveness for their unique needs.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Commitment to Continuous Improvement',
-    description:
-      'Ongoing investment in process improvement and operational excellence keeps our products aligned with the latest industry requirements.',
-  },
-];
-
 /* ─── Products ────────────────────────────────────────────────────── */
 const products = [
   {

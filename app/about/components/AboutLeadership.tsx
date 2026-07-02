@@ -7,8 +7,15 @@ const FOUNDER = {
   name: 'Dr. Sri Lakshmi E',
   title: 'Founder',
   credential: 'Ph.D., Electrical & Electronics Engineering — IIT (BHU), Varanasi',
-  bio: 'Leveraging her academic and technical expertise in electronic systems and manufacturing, Dr. Lakshmi founded Steadcore Industries to deliver reliable, cost-effective, and technologically advanced PCB solutions to India’s rapidly expanding electronics sector.',
+  education: [
+    'Ph.D., Electrical & Electronics Engineering — IIT (BHU), Varanasi',
+    'M.Tech., Electrical Power Engineering — JNTU, Hyderabad',
+    'B.Tech., Electrical & Electronics Engineering — JNTU, Hyderabad',
+  ],
+  bio: 'A distinguished academician, researcher, and engineering professional, Dr. Sri Lakshmi has served as an Assistant Professor and Head of Department, working across Electrical, Electronics, and Computer Science domains. Her research spans Electric Vehicles, Renewable Energy Systems, Control Systems, Power Electronics, and Smart Energy Technologies, with numerous papers in national and international journals — recognized with the Academic Excellence Award (AEA) 2023 for Best Research. Driven by a vision to strengthen India\u2019s electronics manufacturing ecosystem, she founded Steadcore Industries to deliver precision-engineered PCB solutions that meet global standards, bringing her academic rigor and research leadership to the company\u2019s mission.',
 };
+
+const EXPERTISE = ['Electric Vehicles', 'Renewable Energy', 'Power Electronics', 'Control Systems', 'Smart Energy Systems'];
 
 const VALUES = ['Quality', 'Integrity', 'Innovation', 'Customer commitment'];
 
@@ -56,15 +63,34 @@ export function AboutLeadership() {
                     <p className="text-sm text-primary font-semibold mt-0.5">
                       {FOUNDER.title}
                     </p>
-                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-                      {FOUNDER.credential}
-                    </p>
+
+                    <ul className="mt-1.5 space-y-0.5" aria-label="Education">
+                      {FOUNDER.education.map((line) => (
+                        <li
+                          key={line}
+                          className="text-xs text-slate-400 dark:text-slate-500 leading-snug"
+                        >
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
 
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-4 max-w-2xl">
                       {FOUNDER.bio}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mt-5" aria-label="Core values she leads by">
+                    <div className="flex flex-wrap gap-2 mt-5" aria-label="Research & expertise areas">
+                      {EXPERTISE.map((e) => (
+                        <span
+                          key={e}
+                          className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/5 text-primary border border-primary/10"
+                        >
+                          {e}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mt-2.5" aria-label="Core values she leads by">
                       {VALUES.map((v) => (
                         <span
                           key={v}

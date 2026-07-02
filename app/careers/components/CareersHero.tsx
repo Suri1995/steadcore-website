@@ -65,7 +65,7 @@ AcademicIcon.displayName = 'AcademicIcon';
 const TOTAL_ROLES = 7;
 
 const stats = [
-  { num: `${TOTAL_ROLES}`, label: 'Open roles',        Icon: UsersIcon },
+  // { num: `${TOTAL_ROLES}`, label: 'Open roles',        Icon: UsersIcon },
   { num: '2026',           label: 'Year founded',       Icon: CalendarIcon },
   { num: 'Hyderabad',      label: 'Location',           Icon: MapPinIcon },
   { num: 'IIT BHU',        label: 'Founder background', Icon: AcademicIcon },

@@ -178,24 +178,6 @@ export function AboutHero() {
                   Explore Capabilities
                 </a>
               </div>
-
-              {/* Founder credibility strip */}
-              <div className="mt-7 flex items-center gap-3 max-w-sm">
-                <div
-                  aria-hidden="true"
-                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold font-montserrat text-sm shrink-0"
-                >
-                  SL
-                </div>
-                <div className="leading-tight">
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
-                    Dr. Sri Lakshmi E
-                  </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Founder · Ph.D, EEE, IIT (BHU) Varanasi
-                  </p>
-                </div>
-              </div>
             </div>
           </Reveal>
 

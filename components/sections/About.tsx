@@ -20,11 +20,6 @@ const capabilities = [
     description: 'Stringent quality control at every stage — every PCB meets customer specs and industry standards for performance and reliability.',
   },
   {
-    Icon: GraduationCap,
-    title: 'Technical Expertise & Leadership',
-    description: 'Founded by Dr. Sri Lakshmi E, Ph.D. (IIT BHU) — deep engineering knowledge powering dependable PCB solutions.',
-  },
-  {
     Icon: Cpu,
     title: 'Diverse PCB Capabilities',
     description: 'Single-Sided, Double-Sided, and Metal-Core PCBs for LED lighting, consumer electronics, automation, and power electronics.',
@@ -49,7 +44,7 @@ const capabilities = [
 const milestones = [
   {
     title: 'Founded',
-    desc: 'Established in Ramdaspally, Hyderabad by Dr. Sri Lakshmi E, Ph.D. (IIT BHU)',
+    desc: 'Established in Ramdaspally, Hyderabad',
     tag: 'Origin',
   },
   {
@@ -129,8 +124,7 @@ export function About() {
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mt-6">
                 Established in 2026 in Ramdaspally, Hyderabad, Steadcore Industries is a
-                technology-driven PCB manufacturer founded by Dr. Sri Lakshmi E (Ph.D., IIT BHU)
-                — built to deliver reliable, cost-effective, and technologically advanced PCB
+                technology-driven PCB manufacturer built to deliver reliable, cost-effective, and technologically advanced PCB
                 solutions that strengthen India's growing electronics ecosystem.
               </p>
             </div>
@@ -242,7 +236,7 @@ export function About() {
 
            {/* ── OUR PROMISE STRIP ──────────────────────────────────── */}
                   <ScrollReveal animation="fade-in" delay={0}>
-                    <div className="">
+                    <div className="mt-8 sm:mt-10">
                       <div className="rounded-2xl border border-primary/15 bg-card px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                         <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">
                           Our Promise

@@ -11,7 +11,7 @@ export function Footer() {
   const footerLinks = {
     Products: [
       { label: 'Single Layer PCB', href: '#' },
-      { label: 'Multi-Layer PCB', href: '#' },
+      { label: 'Double-Layer PCB', href: '#' },
       { label: 'Metal Clad PCB', href: '#' },
     ],
     Company: [
@@ -104,7 +104,7 @@ export function Footer() {
                       alt="SteadCore Industries"
                       width={200}
                       height={58}
-                      className="h-11 w-auto"
+                      className="h-16 w-64"
                     />
                   </div>
                 </div>

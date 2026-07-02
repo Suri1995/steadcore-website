@@ -6,7 +6,7 @@ const MILESTONES = [
   {
     year: '2026',
     title: 'Founded in Ramdaspally, Hyderabad',
-    body: 'Dr. Sri Lakshmi E, a Ph.D. in Electrical and Electronics Engineering from IIT (BHU) Varanasi, establishes Steadcore Industries with a vision to bring reliable, cost-effective, and technologically advanced PCB solutions to India’s rapidly expanding electronics sector.',
+    body: 'Steadcore Industries established with a vision to bring reliable, cost-effective, and technologically advanced PCB solutions to India’s rapidly expanding electronics sector.',
   },
   {
     year: 'Day one',
@@ -34,13 +34,25 @@ export function AboutTimeline() {
   return (
     <section
       aria-labelledby="timeline-heading"
-      className="py-16 sm:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800"
+      className="relative py-16 sm:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient PCB grid — faint dot matrix, ties the section to the product without shouting */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.15]"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle, rgb(148 163 184 / 0.4) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[300px_1fr] gap-10 lg:gap-16 items-start">
           <Reveal from="left">
             <div className="lg:sticky lg:top-32">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide mb-5">
+              <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
                 Our Journey
               </span>
               <h2
@@ -57,34 +69,53 @@ export function AboutTimeline() {
           </Reveal>
 
           <ol aria-label="Steadcore Industries foundation and roadmap" className="relative">
-            {/* Connecting line — centered on the 12px dots below (0.75rem / 2 = 1.5) */}
+            {/* Trace — the main spine, styled like a copper trace with a soft glow, fading in at the top and out at the bottom */}
             <div
               aria-hidden="true"
-              className="absolute left-1.5 top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-700"
+              className="absolute left-[7px] top-2 bottom-2 w-px"
+              style={{
+                background:
+                  'linear-gradient(to bottom, transparent, var(--color-primary, #16a34a) 8%, var(--color-primary, #16a34a) 92%, transparent)',
+                opacity: 0.25,
+              }}
             />
 
-            <div className="space-y-0">
+            <div className="space-y-8 sm:space-y-10">
               {MILESTONES.map((item, i) => (
                 <Reveal key={`${item.year}-${item.title}`} delay={i * 0.06}>
-                  <li className="group relative pl-10 sm:pl-12 pb-10 sm:pb-12 last:pb-0">
-                    {/* Dot — own dedicated gutter, never collides with text */}
+                  <li className="group relative pl-10 sm:pl-12">
+                    {/* Via — a two-ring solder-pad marker instead of a plain dot */}
                     <span
                       aria-hidden="true"
-                      className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-600 group-hover:border-primary group-hover:scale-110 transition-[border-color,transform] duration-300 z-10"
+                      className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-600 group-hover:border-primary transition-colors duration-300 z-10 flex items-center justify-center"
+                    >
+                      <span className="w-[5px] h-[5px] rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-primary group-hover:scale-125 transition-all duration-300" />
+                    </span>
+
+                    {/* Lead — short horizontal stub from the via into the card, like a trace branching off the spine */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-[15px] top-[10px] w-4 sm:w-5 h-px bg-slate-300 dark:bg-slate-600 group-hover:bg-primary/60 transition-colors duration-300"
                     />
 
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-2">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] sm:text-xs font-bold uppercase tracking-wider font-montserrat whitespace-nowrap">
-                        {item.year}
-                      </span>
-                      <h3 className="font-bold font-montserrat text-slate-900 dark:text-white text-base sm:text-lg leading-snug">
-                        {item.title}
-                      </h3>
-                    </div>
+                    <div
+                      className="rounded-2xl border border-slate-100 dark:border-slate-800 bg-white/60 dark:bg-slate-800/40 p-5 sm:p-6 -mt-3 ml-2 sm:ml-3
+                        group-hover:border-primary/25 group-hover:bg-white dark:group-hover:bg-slate-800/80 group-hover:shadow-lg group-hover:shadow-primary/5
+                        group-hover:-translate-y-0.5 transition-[transform,box-shadow,border-color,background-color] duration-300"
+                    >
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-2">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider font-mono whitespace-nowrap">
+                          {item.year}
+                        </span>
+                        <h3 className="font-bold font-montserrat text-slate-900 dark:text-white text-base sm:text-lg leading-snug">
+                          {item.title}
+                        </h3>
+                      </div>
 
-                    <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                      {item.body}
-                    </p>
+                      <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                        {item.body}
+                      </p>
+                    </div>
                   </li>
                 </Reveal>
               ))}

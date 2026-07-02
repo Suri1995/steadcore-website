@@ -14,7 +14,7 @@ const steps = [
   {
     step: '03',
     title: 'On-site visit',
-    desc: "Come to Ramdaspally, walk the production floor, and meet the team. You'll have a working session relevant to the role and a conversation with Dr. Sri Lakshmi E.",
+    desc: "Come to Ramdaspally, walk the production floor, and meet the team. You'll have a working session relevant to the role and a conversation with Managing Director.",
   },
   {
     step: '04',

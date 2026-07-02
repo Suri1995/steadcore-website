@@ -27,7 +27,7 @@ export default function AboutPage() {
       <AboutTimeline />
       <AboutLeadership />
       <AboutValues />
-      <AboutCertifications />
+      {/* <AboutCertifications /> */}
       <AboutCTA />
       <Footer />
     </main>

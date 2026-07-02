@@ -43,7 +43,7 @@ const reasons = [
   {
     number: '02',
     heading: 'Engineering-led, IIT-founded',
-    body: 'Founded by Dr. Sri Lakshmi E (Ph.D., IIT BHU), the company is built on technical rigour. We make decisions with data and engineering principles, not just instinct.',
+    body: 'The company is built on technical rigour. We make decisions with data and engineering principles, not just instinct.',
     icon: SparkleIcon,
     gradient: 'from-blue-500 to-indigo-500',
     bgGradient: 'from-blue-50/50 to-indigo-50/50 dark:from-blue-950/20 dark:to-indigo-950/20',
