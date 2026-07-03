@@ -295,7 +295,7 @@ export const CareersHero = React.memo(() => {
                     className="inline-flex items-center gap-2 rounded-md border border-border bg-transparent px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-muted hover:-translate-y-0.5 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                   >
                     <MailIcon className="w-4 h-4" />
-                    Send a speculative CV
+                    Send your CV
                   </a>
                 </div>
               </div>

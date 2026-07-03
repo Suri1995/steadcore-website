@@ -43,11 +43,6 @@ const capabilities = [
 
 const milestones = [
   {
-    title: 'Founded',
-    desc: 'Established in Ramdaspally, Hyderabad',
-    tag: 'Origin',
-  },
-  {
     title: 'Production Launch',
     desc: '10,000 sqm Single-Sided and 3,000 sqm Double-Sided PCB capacity achieved',
     tag: 'Capacity',
@@ -119,8 +114,8 @@ export function About() {
                 About Us
               </span>
               <h2 className="text-4xl md:text-5xl font-bold font-montserrat mt-3">
-                <span className="text-slate-900 dark:text-white">About </span>
-                <span className="gradient-text">Steadcore</span>
+                <span className="text-slate-900 dark:text-white">Our </span>
+                <span className="gradient-text">Story</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mt-6">
                 Established in 2026 in Ramdaspally, Hyderabad, Steadcore Industries is a

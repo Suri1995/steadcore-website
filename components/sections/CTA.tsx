@@ -16,7 +16,7 @@ export function CTA() {
 
         <ScrollReveal animation="slide-up" delay={100}>
           <p className="text-lg md:text-xl mb-8 text-white/90 leading-relaxed max-w-2xl mx-auto">
-            Join hundreds of leading companies that trust PCBTech for their circuit board manufacturing needs. Let&apos;s build the future together.
+            Join hundreds of leading companies that trust <span className='font-semibold text-[#23ea5b]'>Steadcore </span>for their circuit board manufacturing needs. Let&apos;s build the future together.
           </p>
         </ScrollReveal>
 

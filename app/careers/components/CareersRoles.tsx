@@ -458,7 +458,7 @@ export const CareersRoles = React.memo(() => {
               className="flex-shrink-0 inline-flex items-center gap-2 rounded-lg border-2 border-primary/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               <MailIcon className="w-4 h-4" />
-              Send speculative CV
+              Send your CV
               <ChevronRightIcon className="w-3.5 h-3.5" />
             </a>
           </div>
