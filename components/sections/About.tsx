@@ -95,14 +95,6 @@ export function About() {
         id="about"
         className="relative py-16 md:py-20 lg:py-24 bg-white dark:bg-slate-900 overflow-hidden"
       >
-        {/* Atmospheric watermark — "PCB" bleeds behind the section */}
-        <span
-          className="pointer-events-none select-none absolute -top-4 right-0 font-montserrat font-black text-primary/[0.04] dark:text-primary/[0.07] leading-none"
-          style={{ fontSize: 'clamp(120px, 18vw, 220px)' }}
-          aria-hidden="true"
-        >
-          PCB
-        </span>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-10 relative">
 
@@ -118,7 +110,7 @@ export function About() {
                 <span className="gradient-text">Story</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mt-6">
-                Established in 2026 in Ramdaspally, Hyderabad, Steadcore Industries is a
+                Established in 2026 at Ramdaspally, Hyderabad, Steadcore Industries is a
                 technology-driven PCB manufacturer built to deliver reliable, cost-effective, and technologically advanced PCB
                 solutions that strengthen India's growing electronics ecosystem.
               </p>
